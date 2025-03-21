@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 'use client';
 
 import { useRef, useState } from 'react';
@@ -20,11 +22,12 @@ export default function Home() {
   const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     event.preventDefault();
     const zoomFactor = event.deltaY > 0 ? 0.9 : 1.1; // Zoom in or out
-    setZoom((prevZoom) => Math.min(3, Math.max(0.5, prevZoom * zoomFactor))); // Limit zoom levels
+    setZoom((prevZoom) => Math.min(3, Math.max(1, prevZoom * zoomFactor))); // Limit zoom between 1x and 3x
   };
 
   return (
     <main className="map-container">
+      {/* Map Wrapper - Only this part is movable */}
       <div
         ref={mapRef}
         className="movable-map"
@@ -34,14 +37,13 @@ export default function Home() {
           transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/map.png" alt="Custom Map" className="map-image" />
       </div>
 
-      {/* Glowing Pin */}
+      {/* Glowing Pin - Stays Fixed in Center */}
       <div className="glowing-pin" />
 
-      {/* Footer */}
+      {/* Footer - Stays Fixed at Bottom */}
       <Footer />
     </main>
   );
