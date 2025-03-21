@@ -1,20 +1,19 @@
-import { Col, Container, Image, Row } from 'react-bootstrap';
+'use client';
 
-/** The Home page. */
+import Image from 'next/image';
+import './glow.css'; // create this file for the glowing pin
+import Footer from '../components/Footer';
+
 const Home = () => (
-  <main>
-    <Container id="landing-page" fluid className="py-3">
-      <Row className="align-middle text-center">
-        <Col xs={4}>
-          <Image src="next.svg" width="150px" alt="" />
-        </Col>
-
-        <Col xs={8} className="d-flex flex-column justify-content-center">
-          <h1>Welcome to this template</h1>
-          <p>Now get to work and modify this app!</p>
-        </Col>
-      </Row>
-    </Container>
+  <main style={{ position: 'relative', width: '100%', height: '100vh' }}>
+    <Image
+      src="/Nuanu.png" // make sure this file exists in your public/ folder
+      alt="Map"
+      layout="fill"
+      objectFit="cover"
+    />
+    <div className="glowing-pin" />
+    <Footer />
   </main>
 );
 
