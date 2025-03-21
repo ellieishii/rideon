@@ -10,8 +10,11 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Ride On',
   description: 'An immersive ride-sharing story app',
-  themeColor: '#000000',
   manifest: '/manifest.json',
+};
+
+export const viewport = {
+  themeColor: '#000000',
 };
 
 export default function RootLayout({

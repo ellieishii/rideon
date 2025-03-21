@@ -2,22 +2,22 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '@/components/Footer';
 import './glow.css';
 
 export default function Home() {
   const [zoom, setZoom] = useState(1);
-  const [position, setPosition] = useState(() => {
-    if (window.innerWidth < 768) {
-      // 📱 Mobile view (adjust for smaller screens)
-      return { x: -3300, y: -600 };
-    }
-    // 🖥️ Desktop view
-    return { x: -1200, y: -200 };
-  });
+  const [position, setPosition] = useState({ x: -1200, y: -200 }); // Default position
   const [dragging, setDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+
+  // ✅ Fix: Set position AFTER the component mounts (Client-Side)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      setPosition({ x: -3300, y: -600 });
+    }
+  }, []); // Runs once when component mounts
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setDragging(true);
