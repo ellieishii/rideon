@@ -52,8 +52,9 @@ export default function Home() {
     if (e.touches.length === 2) {
       const touchDist = getTouchDistance(e.touches as unknown as TouchList);
       if (lastTouchDist !== null && touchDist !== null) {
-        const zoomChange = touchDist / lastTouchDist;
-        setZoom((prev) => Math.min(3, Math.max(0.5, prev * zoomChange)));
+        const diff = touchDist - lastTouchDist;
+        const zoomChange = diff / 300;
+        setZoom((prev) => clamp(prev + zoomChange, 0.3, 2));
         setLastTouchDist(touchDist);
       }
     } else {
@@ -69,11 +70,10 @@ export default function Home() {
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
-    const zoomFactor = e.deltaY > 0 ? 0.95 : 1.05;
-    setZoom((prev) => Math.min(3, Math.max(0.5, prev * zoomFactor)));
+    const zoomChange = e.deltaY > 0 ? -0.05 : 0.05;
+    setZoom((prev) => clamp(prev + zoomChange, 0.3, 2));
   };
 
-  // ✅ Fix: Safe way to access touch1 and touch2 from TouchList
   const getTouchDistance = (touches: TouchList): number | null => {
     const touch1 = touches.item(0);
     const touch2 = touches.item(1);
@@ -84,6 +84,8 @@ export default function Home() {
       + (touch2.clientY - touch1.clientY) ** 2,
     );
   };
+
+  const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value));
 
   return (
     <main className="map-container">
@@ -98,11 +100,12 @@ export default function Home() {
         onWheel={handleWheel}
         style={{
           transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+          transformOrigin: 'top left',
         }}
       >
         <img src="/map.png" alt="Map" className="map-image" />
 
-        {/* 📍 Pin: Stays at correct location */}
+        {/* 📍 Red pin */}
         <div
           className="glowing-pin"
           style={{
