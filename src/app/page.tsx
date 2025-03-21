@@ -21,6 +21,21 @@ export default function Home() {
     }
   }, []); // Runs once when component mounts
 
+  const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value));
+
+  const adjustPositionOnZoom = (
+    oldZoom: number,
+    newZoom: number,
+    centerX: number,
+    centerY: number,
+  ) => {
+    const zoomRatio = newZoom / oldZoom;
+    setPosition((prev) => ({
+      x: centerX - (centerX - prev.x) * zoomRatio,
+      y: centerY - (centerY - prev.y) * zoomRatio,
+    }));
+  };
+
   const handleMouseDown = (e: React.MouseEvent) => {
     setDragging(true);
     setStartPos({ x: e.clientX, y: e.clientY });
@@ -39,9 +54,7 @@ export default function Home() {
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     if (e.touches.length === 2) {
       const touchDist = getTouchDistance(e.touches as unknown as TouchList);
-      if (touchDist !== null) {
-        setLastTouchDist(touchDist);
-      }
+      if (touchDist !== null) setLastTouchDist(touchDist);
     } else {
       const touch = e.touches[0];
       setStartPos({ x: touch.clientX, y: touch.clientY });
@@ -52,9 +65,14 @@ export default function Home() {
     if (e.touches.length === 2) {
       const touchDist = getTouchDistance(e.touches as unknown as TouchList);
       if (lastTouchDist !== null && touchDist !== null) {
-        const diff = touchDist - lastTouchDist;
-        const zoomChange = diff / 300;
-        setZoom((prev) => clamp(prev + zoomChange, 0.3, 2));
+        const zoomChange = touchDist / lastTouchDist;
+        const newZoom = clamp(zoom * zoomChange, 0.3, 2);
+
+        const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+        adjustPositionOnZoom(zoom, newZoom, midX, midY);
+        setZoom(newZoom);
         setLastTouchDist(touchDist);
       }
     } else {
@@ -71,7 +89,9 @@ export default function Home() {
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
     const zoomChange = e.deltaY > 0 ? -0.05 : 0.05;
-    setZoom((prev) => clamp(prev + zoomChange, 0.3, 2));
+    const newZoom = clamp(zoom + zoomChange, 0.3, 2);
+    adjustPositionOnZoom(zoom, newZoom, e.clientX, e.clientY);
+    setZoom(newZoom);
   };
 
   const getTouchDistance = (touches: TouchList): number | null => {
@@ -84,8 +104,6 @@ export default function Home() {
       + (touch2.clientY - touch1.clientY) ** 2,
     );
   };
-
-  const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value));
 
   return (
     <main className="map-container">
@@ -105,7 +123,7 @@ export default function Home() {
       >
         <img src="/map.png" alt="Map" className="map-image" />
 
-        {/* 📍 Red pin */}
+        {/* 📍 Glowing Pin */}
         <div
           className="glowing-pin"
           style={{
