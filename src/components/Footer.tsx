@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { House, Grid, Receipt, Person } from 'react-bootstrap-icons';
 
 const Footer = () => (
-  <footer className="footer">
+  <footer className="footer fixed-footer">
     <Container fluid>
       <Row className="text-center">
         <Col>

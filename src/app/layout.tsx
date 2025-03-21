@@ -31,8 +31,10 @@ export default function RootLayout({
       </head>
       <body className={classString}>
         <Providers>
-          <NavBar />
-          {children}
+          <div className="fixed-navbar">
+            <NavBar />
+            {children}
+          </div>
         </Providers>
       </body>
     </html>
