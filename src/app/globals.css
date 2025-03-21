@@ -5,9 +5,9 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  overflow: hidden;
 }
 .wrapper {
+  overflow-y: auto;
   box-sizing: border-box;
   min-height: 100%;
   display: flex;
@@ -70,20 +70,4 @@ footer .bi {
   color: #f13434; /* Optional hover color */
 }
 
-/* Fix Navbar to top */
-.fixed-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-}
 
-/* Fix Footer to bottom */
-.fixed-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-}

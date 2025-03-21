@@ -21,6 +21,7 @@
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
     "leaflet": "^1.9.4",
+    "lucide-react": "^0.483.0",
     "multiselect-react-dropdown": "^2.0.25",
     "next": "^14.2.24",
     "next-auth": "^4.24.7",
