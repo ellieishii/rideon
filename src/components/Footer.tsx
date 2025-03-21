@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Container, Row, Col } from 'react-bootstrap';
 import { House, Grid, Receipt, Person } from 'react-bootstrap-icons';
 
@@ -16,8 +17,12 @@ const Footer = () => (
           <div className="footer-label">Services</div>
         </Col>
         <Col>
-          <Receipt size={24} />
-          <div className="footer-label">Activity</div>
+          <Link href="/activity" className="footer-link">
+            <div>
+              <Receipt size={24} />
+              <div className="footer-label">Activity</div>
+            </div>
+          </Link>
         </Col>
         <Col>
           <Person size={24} />

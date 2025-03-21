@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 const Home = () => (
   <main style={{ position: 'relative', width: '100%', height: '100vh' }}>
     <Image
-      src="/Nuanu.png" // make sure this file exists in your public/ folder
+      src="/map.png" // make sure this file exists in your public/ folder
       alt="Map"
       layout="fill"
       objectFit="cover"
