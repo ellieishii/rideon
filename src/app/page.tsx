@@ -7,15 +7,15 @@ import Footer from '@/components/Footer';
 import './glow.css';
 
 export default function Home() {
-  const [zoom, setZoom] = useState(1);
-  const [position, setPosition] = useState({ x: -1200, y: -200 }); // Default position
+  const [zoom, setZoom] = useState(0.4);
+  const [position, setPosition] = useState({ x: -500, y: -200 }); // Default position
   const [dragging, setDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
 
   // ✅ Fix: Set position AFTER the component mounts (Client-Side)
   useEffect(() => {
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      setPosition({ x: -3300, y: -600 });
+      setPosition({ x: -1230, y: -70 });
     }
   }, []); // Runs once when component mounts
 
