@@ -9,8 +9,12 @@ const Footer = () => (
     <Container fluid>
       <Row className="text-center">
         <Col>
-          <House size={24} />
-          <div className="footer-label">Home</div>
+          <Link href="/" className="footer-link">
+            <div>
+              <House size={24} />
+              <div className="footer-label">Home</div>
+            </div>
+          </Link>
         </Col>
         <Col>
           <Grid size={24} />

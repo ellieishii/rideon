@@ -1,25 +1,49 @@
-.glowing-pin {
+.map-container {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      position: relative;
+    }
+    
+    .movable-map {
+      width: 150%;
+      height: auto;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.1s ease-out;
+    }
+    
+    .map-image {
+      width: 100%;
+      height: auto;
+    }
+    
+    .glowing-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
       width: 20px;
       height: 20px;
       background-color: red;
       border-radius: 50%;
-      position: absolute;
-      top: 50%; /* adjust as needed */
-      left: 50%;
+      box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.6);
       transform: translate(-50%, -50%);
-      animation: glow 1s infinite;
-      box-shadow: 0 0 5px red;
+      animation: pulse 1.5s infinite;
     }
     
-    @keyframes glow {
+    @keyframes pulse {
       0% {
-        box-shadow: 0 0 5px red;
+        box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.6);
       }
       50% {
-        box-shadow: 0 0 20px red;
+        box-shadow: 0 0 20px 10px rgba(255, 0, 0, 0.4);
       }
       100% {
-        box-shadow: 0 0 5px red;
+        box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.6);
       }
     }
     
