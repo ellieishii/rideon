@@ -8,7 +8,14 @@ import './glow.css';
 
 export default function Home() {
   const [zoom, setZoom] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState(() => {
+    if (window.innerWidth < 768) {
+      // 📱 Mobile view (adjust for smaller screens)
+      return { x: -3300, y: -600 };
+    }
+    // 🖥️ Desktop view
+    return { x: -1200, y: -200 };
+  });
   const [dragging, setDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
 
@@ -62,10 +69,19 @@ export default function Home() {
         }}
       >
         <img src="/map.png" alt="Map" className="map-image" />
-      </div>
 
-      {/* Pin stays fixed */}
-      <div className="glowing-pin" />
+        {/* 📍 Pin: Stays at the intersection */}
+        <div
+          className="glowing-pin"
+          style={{
+            position: 'absolute',
+            top: '32%',
+            left: '55.5%',
+            transform: `scale(${1 / zoom})`, // ✅ Keeps the pin size consistent
+            transformOrigin: 'center center',
+          }}
+        />
+      </div>
 
       {/* Footer stays fixed at bottom */}
       <Footer />

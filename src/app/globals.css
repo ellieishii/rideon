@@ -28,7 +28,13 @@ body {
 
 .custom-navbar {
   background-color: #000000c8;
+  position: fixed;         /* 🧠 Make it stay on top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;            /* ⬆️ Make sure it's above the map */
 }
+
 
 .custom-navbar .navbar-brand,
 .custom-navbar .user-name,

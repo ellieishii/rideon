@@ -31,7 +31,7 @@ export default function RootLayout({
       </head>
       <body className={classString}>
         <Providers>
-          <div className="fixed-navbar">
+          <div className="fixed-navbar custom-navbar">
             <NavBar />
             {children}
           </div>
