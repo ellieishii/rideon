@@ -22,6 +22,13 @@ export default function RootLayout({
   const classString = `${inter.className} wrapper`;
   return (
     <html lang="en">
+      <head>
+        {/* 🚫 Prevents mobile zoom and removes black gaps */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+      </head>
       <body className={classString}>
         <Providers>
           <NavBar />
