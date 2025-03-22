@@ -1,47 +1,21 @@
-/* Prevent scrollbars on all devices */
-html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    
-    /* Prevent scrollbars inside the map container */
-    .map-container {
+.map-container {
+      position: relative;
       width: 100vw;
       height: 100vh;
-      position: relative;
+      overflow: hidden; /* ⛔ Prevent black edges */
       background: #000;
     }
     
-    /* Fix NavBar & Footer positioning */
-    .fixed-navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-    }
-    
-    .fixed-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-    }
-    
     .movable-map {
-      z-index: 1;
       position: absolute;
       top: 0;
       left: 0;
+      width: max-content;
+      height: max-content;
       cursor: grab;
       user-select: none;
       touch-action: none;
-      transition: transform 0.2s ease-out;
-      transform-origin: top left;
-      width: max-content;
-      height: max-content;
+      z-index: 0;
     }
     
     .map-image {
@@ -50,9 +24,7 @@ html, body {
       height: auto;
       max-width: none;
       max-height: none;
-      z-index: 1;
     }
-    
     
     .glowing-pin {
       width: 18px;
@@ -61,10 +33,10 @@ html, body {
       border-radius: 50%;
       box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.6);
       animation: pulse 1.5s infinite;
+      position: absolute;
       z-index: 10;
     }
     
-
     @keyframes pulse {
       0% {
         box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.6);
