@@ -1,16 +1,18 @@
 html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+  margin: 0;
+  padding: 0;
+  height: auto; /* Allow body to grow */
+  min-height: 100vh;
     }
     
     .activity-page {
-      padding-bottom: 120px;
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
+      max-height: 100vh;
+      overflow-y: auto; /* scrollable page */
       background-color: #000000;
       color: #333;
-      position: relative;
-      overflow-y: auto !important; /* Enable vertical scrolling */
     }
     
     .container {
