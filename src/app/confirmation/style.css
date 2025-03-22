@@ -98,7 +98,6 @@ html, body {
   object-fit: cover;
   transform: scale(1.5);
   transform-origin: 60% 23%;
-  filter: contrast(110%) saturate(110%);
 }
 
 .address-badge {

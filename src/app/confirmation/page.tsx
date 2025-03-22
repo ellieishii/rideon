@@ -23,7 +23,7 @@ export default function ConfirmationPage() {
         {/* Map */}
         <div className="map-container">
           <img
-            src="/map.png"
+            src="/confirmationmap.png"
             alt="Delivery Map"
             className="map-image"
           />
