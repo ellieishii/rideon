@@ -3,9 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import {
-  House,
   Search,
-  Person,
   Clock,
   ChevronRight,
   CarFrontFill,
@@ -15,8 +13,6 @@ import {
   People,
   Map,
   ClockHistory,
-  Grid,
-  List,
 } from 'react-bootstrap-icons';
 import './style.css';
 import Footer from '@/components/Footer';
@@ -130,26 +126,6 @@ const SearchPage = () => {
             <div className="schedule-section">
               <div className="schedule-title">Ride on your schedule</div>
               <ClockHistory size={24} className="schedule-icon" />
-            </div>
-          </div>
-
-          {/* Bottom Navigation */}
-          <div className="bottom-nav">
-            <div className="nav-item active">
-              <House size={20} className="nav-icon" />
-              <div className="nav-label">Home</div>
-            </div>
-            <div className="nav-item">
-              <Grid size={20} className="nav-icon" />
-              <div className="nav-label">Services</div>
-            </div>
-            <div className="nav-item">
-              <List size={20} className="nav-icon" />
-              <div className="nav-label">Activity</div>
-            </div>
-            <div className="nav-item">
-              <Person size={20} className="nav-icon" />
-              <div className="nav-label">Account</div>
             </div>
           </div>
           <Footer />
