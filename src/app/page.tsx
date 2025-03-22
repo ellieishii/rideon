@@ -146,8 +146,8 @@ export default function Home() {
           className="glowing-pin"
           style={{
             position: 'absolute',
-            top: '32%',
-            left: '55.5%',
+            top: '30.9%',
+            left: '53.4%',
             transform: `scale(${1 / zoom})`,
             transformOrigin: 'center center',
           }}
