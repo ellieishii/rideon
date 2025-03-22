@@ -19,7 +19,7 @@ export default function ActivityPage() {
       driver: 'Loading...',
       carModel: 'Sedan',
       estimatedArrival: ' 30 minutes',
-      driverImg: '/api/placeholder/48/48',
+      driverImg: <RotateCw className="refresh-icon" size={32} />,
     },
     {
       id: 2,
@@ -76,7 +76,7 @@ export default function ActivityPage() {
 
                   <div className="driver-info">
                     <div className="driver-avatar">
-                      <img src={ride.driverImg} alt="Driver" />
+                      {ride.driverImg}
                     </div>
                     <div className="driver-details">
                       <p className="driver-name">{ride.driver}</p>
