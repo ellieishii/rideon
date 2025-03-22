@@ -13,13 +13,12 @@ import {
   CupHotFill,
   CalendarCheck,
   Key,
-  People,
-  Map,
   ClockHistory,
   Person,
 } from 'react-bootstrap-icons';
 import './style.css';
 import Footer from '@/components/Footer';
+import { RotateCw } from 'lucide-react';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
@@ -114,7 +113,7 @@ const SearchPage = () => {
               <div className="promo-cards">
                 <div className="promo-card">
                   <div className="promo-image">
-                    <Map size={24} className="promo-icon" />
+                    <RotateCw size={25} className="icon-spin" />
                   </div>
                   <div className="promo-content">
                     <div className="promo-title">Add a stop or 5 →</div>
@@ -125,7 +124,7 @@ const SearchPage = () => {
                 </div>
                 <div className="promo-card">
                   <div className="promo-image">
-                    <People size={24} className="promo-icon" />
+                    <RotateCw size={25} className="icon-spin" />
                   </div>
                   <div className="promo-content">
                     <div className="promo-title">Share your ride →</div>
