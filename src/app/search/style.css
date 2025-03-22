@@ -325,3 +325,149 @@
 .calendar-icon {
   margin-right: 8px;
 }
+
+/* Search Pop Up */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 999;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.search-overlay-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  background-color: #1c1c1c;
+  color: white;
+}
+
+.cancel-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.saved-places {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: white;
+}
+
+.saved-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.saved-text .name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.saved-text .address {
+  font-size: 14px;
+  color: #999;
+}
+
+.overlay-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #fdfdfd;
+}
+
+.location-box {
+  background-color: #1c1c1c;
+  border: 2px solid #fef1ca; /* bright yellow */
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 0 12px #ffffff; /* yellow glow */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.location-entry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.location-entry.top {
+  margin-bottom: 8px;
+}
+
+.dot, .square {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 12px;
+}
+
+.square {
+  border-radius: 2px;
+}
+
+.location-text {
+  font-size: 16px;
+  color: white;
+}
+
+.divider-line {
+  height: 1px;
+  background-color: #555;
+  margin-left: 12px;
+  margin-bottom: 12px;
+}
+
+.where-to-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0 16px;
+}
+
+.filter-button {
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-icon {
+  margin-right: 4px;
+}
+
+.dropdown-arrow {
+  font-size: 12px;
+}

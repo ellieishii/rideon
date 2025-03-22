@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+
 'use client';
 
 import { useState } from 'react';
@@ -13,12 +15,14 @@ import {
   People,
   Map,
   ClockHistory,
+  Person,
 } from 'react-bootstrap-icons';
 import './style.css';
 import Footer from '@/components/Footer';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div className="search-page">
@@ -36,6 +40,7 @@ const SearchPage = () => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="search-input"
+                  onFocus={() => setIsFocused(true)}
                 />
                 <button type="button" className="later-button">
                   <CalendarCheck size={18} className="calendar-icon" />
@@ -51,8 +56,10 @@ const SearchPage = () => {
                   <Clock size={20} className="location-icon-inner" />
                 </div>
                 <div className="location-details">
-                  <div className="location-name">Ala Moana Center</div>
-                  <div className="location-address">1450 Ala Moana Blvd, Honolulu, HI</div>
+                  <div className="location-name">Lilo Ridge Trail</div>
+                  <div className="location-address">
+                    2003 Lilo Rd, Honolulu, HI
+                  </div>
                 </div>
                 <ChevronRight size={18} className="chevron-icon" />
               </div>
@@ -61,8 +68,10 @@ const SearchPage = () => {
                   <Clock size={20} className="location-icon-inner" />
                 </div>
                 <div className="location-details">
-                  <div className="location-name">Lanai @ Ala Moana Center</div>
-                  <div className="location-address">1450 Ala Moana Blvd, Honolulu, HI</div>
+                  <div className="location-name">DQ Mart</div>
+                  <div className="location-address">
+                    1138 Piʻikoi Ave, Honolulu, HI
+                  </div>
                 </div>
                 <ChevronRight size={18} className="chevron-icon" />
               </div>
@@ -107,7 +116,9 @@ const SearchPage = () => {
                   </div>
                   <div className="promo-content">
                     <div className="promo-title">Add a stop or 5 →</div>
-                    <div className="promo-description">Pick up something along the way</div>
+                    <div className="promo-description">
+                      Pick up something along the way
+                    </div>
                   </div>
                 </div>
                 <div className="promo-card">
@@ -116,7 +127,9 @@ const SearchPage = () => {
                   </div>
                   <div className="promo-content">
                     <div className="promo-title">Share your ride →</div>
-                    <div className="promo-description">Share the ride, share the cost</div>
+                    <div className="promo-description">
+                      Share the ride, share the cost
+                    </div>
                   </div>
                 </div>
               </div>
@@ -128,9 +141,83 @@ const SearchPage = () => {
               <ClockHistory size={24} className="schedule-icon" />
             </div>
           </div>
+
+          {/* Footer */}
           <Footer />
         </div>
       </div>
+
+      {/* Overlay screen when input is focused */}
+      {isFocused && (
+        <div className="search-overlay">
+          <div className="overlay-header">
+            <h2 className="overlay-title">Plan your ride</h2>
+            <button
+              type="button"
+              className="cancel-button"
+              onClick={() => setIsFocused(false)}
+            >
+              Cancel
+            </button>
+          </div>
+
+          {/* New filter buttons */}
+          <div className="filter-buttons">
+            <button type="button" className="filter-button">
+              <Clock size={16} className="filter-icon" />
+              Pickup now
+              {' '}
+              <span className="dropdown-arrow">▾</span>
+            </button>
+            <button type="button" className="filter-button">
+              <Person size={16} className="filter-icon" />
+              For me
+              {' '}
+              <span className="dropdown-arrow">▾</span>
+            </button>
+          </div>
+
+          {/* Location Box */}
+          <div className="location-box">
+            <div className="location-entry top">
+              <div className="dot" />
+              <div className="location-text">
+                Square Top Hiking Trail
+              </div>
+            </div>
+            <div className="divider-line" />
+            <div className="location-entry">
+              <div className="square" />
+              <input
+                autoFocus
+                type="text"
+                placeholder="Where to?"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="where-to-input"
+              />
+            </div>
+          </div>
+
+          {/* Saved Places */}
+          <div className="saved-places">
+            <div className="saved-item">
+              <Clock className="saved-icon" size={18} />
+              <div className="saved-text">
+                <div className="name">Lilo Ridge Trail</div>
+                <div className="address">2003 Lilo Rd, Honolulu, HI</div>
+              </div>
+            </div>
+            <div className="saved-item">
+              <Clock className="saved-icon" size={18} />
+              <div className="saved-text">
+                <div className="name">DQ Mart</div>
+                <div className="address">1138 Piʻikoi Ave, Honolulu, HI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
