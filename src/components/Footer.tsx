@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { Container, Row, Col } from 'react-bootstrap';
-import { House, Grid, Receipt, Person } from 'react-bootstrap-icons';
+import { House, Search, Receipt, Person } from 'react-bootstrap-icons';
 
 const Footer = () => (
   <footer className="footer fixed-footer">
-    <Container fluid>
-      <Row className="text-center">
+    <Container fluid className="px-0">
+      <Row className="text-center gx-0">
         <Col>
           <Link href="/" className="footer-link">
             <div>
@@ -17,8 +17,12 @@ const Footer = () => (
           </Link>
         </Col>
         <Col>
-          <Grid size={24} />
-          <div className="footer-label">Services</div>
+          <Link href="/search" className="footer-link">
+            <div>
+              <Search size={24} />
+              <div className="footer-label">Search</div>
+            </div>
+          </Link>
         </Col>
         <Col>
           <Link href="/activity" className="footer-link">
