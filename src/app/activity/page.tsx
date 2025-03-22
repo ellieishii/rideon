@@ -16,7 +16,7 @@ export default function ActivityPage() {
       to: '401 Hoomau Dr',
       price: '$32.50',
       status: 'in-progress',
-      driver: 'Loading...',
+      driver: 'Driver Pending...',
       carModel: 'Sedan',
       estimatedArrival: ' 30 minutes',
       driverImg: <RotateCw className="refresh-icon" size={32} />,

@@ -4,6 +4,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Search,
   Clock,
@@ -23,6 +24,7 @@ import Footer from '@/components/Footer';
 const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="search-page">
@@ -195,6 +197,11 @@ const SearchPage = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="where-to-input"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    router.push('/confirmation');
+                  }
+                }}
               />
             </div>
           </div>
