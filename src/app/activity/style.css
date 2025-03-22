@@ -1,13 +1,13 @@
 html, body {
       margin: 0;
       padding: 0;
-      height: 100%;/* Ensure scrolling is enabled */
+      height: 100%;
     }
     
     .activity-page {
       padding-bottom: 120px;
       min-height: 100vh;
-      background-color: #aabed4;
+      background-color: #000000;
       color: #333;
       position: relative;
       overflow-y: auto !important; /* Enable vertical scrolling */
@@ -23,7 +23,7 @@ html, body {
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 24px;
-      color: #111;
+      color: #ffffff;
     }
     
     .ride-list {

@@ -181,7 +181,7 @@ const SearchPage = () => {
           <div className="location-box">
             <div className="location-entry top">
               <div className="dot" />
-              <div className="location-text">
+              <div className="current-location-text">
                 Square Top Hiking Trail
               </div>
             </div>
